@@ -4,18 +4,37 @@ const fs = require("fs")
 
 const app = express()
 const port = 3000
+const group = 5202521
 
 var cookie = null
-var session = null
 
 app.get("/", (req, res) => {
+    console.log("hello world!")
     res.send("hello world!")
 })
 
-app.get("/debug", (req, res) => {
+app.get("/debug", async (req, res) => {
+    let user = await noblox.getCurrentUser()
     res.json({
-        foo: "bar"
+        robot: user
     })
+})
+
+app.get("/rank", (req, res) => {
+    let uid = parseInt(req.query.uid)
+    let rank = parseInt(req.query.rank)
+    if (!isNaN(uid) && !isNaN(rank))
+    {
+        noblox.setRank(group, uid, rank).then(() => {
+            res.send("Ranking User")
+        }).catch(() => {
+            res.status(500).send("Robot Error")
+        })
+    }
+    else
+    {
+        res.status(400).send("Bad Request")
+    }
 })
 
 fs.readFile("SECRET.har", "utf8", (err, data) => {
@@ -31,8 +50,7 @@ fs.readFile("SECRET.har", "utf8", (err, data) => {
         process.exit(1)
     }
 
-    console.log("got the session cookie")
-    console.log(cookie)
+    noblox.setCookie(cookie)
 
     app.listen(port, () => {
         console.log(`express is listening on port ${port}`)
