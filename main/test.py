@@ -10,17 +10,18 @@ groupID = 5202521
 
 
 
-rpi.client.Action()
+# rpi.client.Action()
 
 
 print(rpy.Group.External.GetOwner(groupID))
 print(rpy.Group.External.GetMemberCount(groupID))
-rob.BaseGroup = rob.BaseGroup.id(groupID)
-print(rob.BaseGroup.get_members())
+# rob.BaseGroup = rob.BaseGroup.id(groupID)
+# print(rob.BaseGroup.get_members())
 
 nameList = rpy.Group.External.GetMembersList(groupID,10)
 
 for i in nameList:
+  print("test=============")
   for j in i:
         print(j)
 
