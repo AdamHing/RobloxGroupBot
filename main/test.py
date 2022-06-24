@@ -8,7 +8,7 @@ import requests
 
 groupID = 5202521
 
-
+#1666631405 id of bot account
 
 # rpi.client.Action()
 
@@ -18,7 +18,7 @@ print(rpy.Group.External.GetMemberCount(groupID))
 # rob.BaseGroup = rob.BaseGroup.id(groupID)
 # print(rob.BaseGroup.get_members())
 
-nameList = rpy.Group.External.GetMembersList(groupID,10)
+nameList = rpy.Group.External.GetMembersList(groupID,370)
 
 for i in nameList:
   print("test=============")
