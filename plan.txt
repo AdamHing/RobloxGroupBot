@@ -1,1 +1,4 @@
-Create a program that updates the status of players in a Roblox group based on actions they preformed while in a game session.
+create program to update players status in group.
+get somebody to host the program 24/7
+send data to the program using lua from a game session.
+
